@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    input,
+    textarea,
+    button {
+        display: block;
+    }
+</style>
+
+<body>
+    <label for="title">title</label>
+    <input type="text" name="title" id="title">
+
+    <label for="todo">todo</label>
+    <textarea name="todo" id="todo" cols="30" rows="10"></textarea>
+
+
+
+    <button>Toevoegen</button>
+
+    <ul id="list">
+
+
+
+    </ul>
+
+
+    <script>
+        var title = document.querySelector("#title");
+        var todo = document.querySelector("#todo");
+        var list = document.querySelector("#list");
+        var button = document.querySelector("button");
+        var ul = document.querySelector("#list");
+
+        button.addEventListener("click", toevoegen)
+
+        var arrayTodoList = [];
+
+        function toevoegen() {
+
+            var inhoudTitle = title.value;
+            var inhoudTodo = todo.value;
+
+            var newLi = document.createElement("li");
+            var newStrong = document.createElement("strong");
+
+            var objectTodo = {
+                titel: inhoudTitle,
+                todo: inhoudTodo
+            }
+
+
+            arrayTodoList.push(objectTodo);
+
+            ul.appendChild(newLi);
+            newLi.appendChild(newStrong);
+            newStrong.innerHTML = objectTodo.titel;
+            var content = document.createTextNode(" " + objectTodo.todo);
+            newLi.appendChild(content);
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>
